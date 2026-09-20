@@ -1,0 +1,228 @@
+* {
+box-sizing: border-box;
+}
+
+html, body {
+margin: 0;
+padding: 0;
+height: 100%;
+width: 100%;
+font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+background: #d8d8d8;
+  overflow: hidden;
+}
+
+#app {
+width: 100%;
+max-width: 480px;
+margin: 0 auto;
+height: 100vh;
+height: 100dvh;
+display: flex;
+flex-direction: column;
+background: #9a9a9a;
+box-shadow: 0 0 24px rgba(0, 0, 0, 0.25);
+position: relative;
+}
+
+/* Header */
+.header {
+background: #111111;
+color: #fff;
+text-align: center;
+padding: 16px 12px;
+font-size: 20px;
+font-weight: 600;
+letter-spacing: 0.5px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+
+.header-logo {
+width: 28px;
+height: 28px;
+object-fit: contain;
+filter: invert(1);
+flex-shrink: 0;
+}
+
+/* Chat area */
+.chat-area {
+flex: 1;
+overflow-y: auto;
+padding: 16px 12px;
+background: #9a9a9a;
+  -webkit-overflow-scrolling: touch;
+}
+
+.msg-row {
+display: flex;
+align-items: flex-end;
+margin-bottom: 12px;
+gap: 8px;
+animation: fadeIn 0.25s ease;
+}
+
+.msg-row.user {
+flex-direction: row-reverse;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(6px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: #e0e0e0;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 15px;
+overflow: hidden;
+}
+
+.avatar.user {
+background: #4a7fd6;
+}
+
+.bubble {
+background: #f5f5f5;
+color: #222;
+padding: 10px 14px;
+border-radius: 16px;
+border-bottom-left-radius: 4px;
+font-size: 14px;
+line-height: 1.4;
+max-width: 80%;
+white-space: pre-line;
+  word-break: break-word;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.msg-row.user .bubble {
+background: #4a7fd6;
+color: #fff;
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 4px;
+}
+
+/* Typing indicator */
+.typing-bubble {
+background: #f5f5f5;
+padding: 12px 16px;
+border-radius: 16px;
+border-bottom-left-radius: 4px;
+display: flex;
+gap: 4px;
+align-items: center;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.typing-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #999;
+animation: bounce 1.2s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Quick options */
+.quick-panel {
+flex-shrink: 0;
+background: #e2e2e2;
+border-top: 1px solid #c5c5c5;
+}
+
+.quick-label {
+padding: 8px 14px 4px;
+font-size: 11px;
+color: #666;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.4px;
+}
+
+.quick-options {
+display: flex;
+flex-direction: column;
+  max-height: 35vh; /* Dynamically scales with mobile screen height */
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+
+.quick-btn {
+background: #eaeaea;
+border: none;
+border-top: 1px solid #d2d2d2;
+text-align: left;
+padding: 12px 14px;
+font-size: 14px;
+color: #222;
+cursor: pointer;
+font-family: inherit;
+transition: background 0.15s;
+width: 100%;
+}
+
+.quick-btn:hover { background: #dcdcdc; }
+.quick-btn:active { background: #cfcfcf; }
+
+/* Input bar */
+.input-bar {
+flex-shrink: 0;
+display: flex;
+align-items: center;
+background: #111;
+padding: 8px 10px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom)); /* Adjusts for Phone home bar */
+gap: 8px;
+}
+
+.input-bar input {
+flex: 1;
+border: none;
+border-radius: 18px;
+padding: 10px 14px;
+  font-size: 16px; 
+outline: none;
+background: #fff;
+}
+
+.input-bar input:disabled {
+background: #ccc;
+color: #777;
+}
+
+.send-btn {
+background: #4a7fd6;
+border: none;
+color: #fff;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+cursor: pointer;
+font-size: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+transition: background 0.15s;
+}
+
+.send-btn:hover { background: #3a6bc0; }
+.send-btn:disabled { background: #7a97c0; cursor: default; }
